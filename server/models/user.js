@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required:true},
     bio: {type: String},
     bros: {type: Array},
-    superbros: {type: Array},
+    bestbros: {type: Array},
 });
 
 userSchema.methods.generateAuthToken = function (){
@@ -27,7 +27,7 @@ const validate = (data) => {
         password: passwordComplexity().required().label('password'),
         bio: '',
         bros: Joi.array(),
-        superbros: Joi.array()
+        bestbros: Joi.array()
     })
     return schema.validate(data)
 };

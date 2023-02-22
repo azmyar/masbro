@@ -10,3 +10,15 @@
     flex-direction: column;
 }
 
+.login {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 15pt;
+    color: white;
+    width: 402px;
+    height: 57px;
+    border-radius: 18px;
+    background-color: gray;
+    margin-top: 15px
+}
+
