@@ -3,17 +3,6 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 const Posts = () => {
-    
-    // Fetch username
-    const[activeUser,setData]=useState("");
-
-    const getData=async()=>{
-        const response=await axios.get("http://localhost:8080/api/active");
-        setData(response.data);
-    }
-
-    // Post Post
-    
 
     // Get post
     const[post,Post] = useState("");
