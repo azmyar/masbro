@@ -6,32 +6,22 @@ const Posts = () => {
 
     // Get bros post
     const[post,Post] = useState("");
-    
-    const getPost = async()=>{
-        const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${JSON.parse(sessionStorage.getItem("bros"))}`);
-        // const postsGet = await axios.get(`http://localhost:8080/api/post/`);
+
+    setTimeout( async function () {
+        const tes = JSON.parse(sessionStorage.getItem("bros"))[0]
+        const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${tes}`);
         Post(postsGet.data);
-    }
-
-    useEffect(()=>{
-        
-        const seePost = async() =>{
-            await getPost()
-            getPost()
-        }
-        seePost()
-    },[]);
-
+    }, 500)
 
     // Return
-
     try{
         var output = ''
         for (let i = 0; i < post.length; i++) {
             output += `<div class="login">
                         ${post[i].post}
                         ${post[i].date}
-                        ${post[i].username}</div>`
+                        ${post[i].username}
+                        </div>`
         }
         return <div dangerouslySetInnerHTML={{ __html : output}}/>
     } catch (error) {
