@@ -4,19 +4,28 @@ import axios from 'axios'
 
 const Posts = () => {
 
-    // Get post
+    // Get bros post
     const[post,Post] = useState("");
-        
-    const getPost = async()=>{
-        const postsGet = await axios.get("http://localhost:8080/api/post");
+    
+    const getPost = async()=>{ 
+        // console.log(JSON.parse(sessionStorage.getItem("bros"))[0])
+        // const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${sessionStorage.getItem("username")}`);
+        const postsGet = await axios.get(`http://localhost:8080/api/post/`);
         Post(postsGet.data);
     }
 
     useEffect(()=>{
-        getPost()
+        
+        const seePost = async() =>{
+            await getPost()
+            getPost()
+        }
+        seePost()
     },[]);
 
+
     // Return
+
     try{
         var output = ''
         for (let i = 0; i < post.length; i++) {

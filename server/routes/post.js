@@ -11,4 +11,9 @@ router.get("/", async (req,res) => {
     res.send(posts)
 })
 
+router.get("/bros", async (req,res) => {
+    const users = await Post.find(req.query);
+    res.send(users)
+})
+
 module.exports = router;
