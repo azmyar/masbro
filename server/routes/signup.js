@@ -24,13 +24,13 @@ router.post("/",async(req,res) => {
 })
 
 router.get("/", async(req,res)=> {
-    const users = await User.find(req.body);
+    const users = await User.find();
     res.send(users)
 })
 
 router.get("/active", async(req,res)=> {
-    const users = await User.find(req.body);
-    res.send(users)
+    const user = await User.find(req.query);
+    res.send(user)
 })
 
 module.exports = router;

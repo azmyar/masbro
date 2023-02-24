@@ -12,26 +12,24 @@ const Home = () => {
         window.location.reload()
     }
 
-
     // Fetch activeUser
     const[activeUsername, Username] = useState("");
-    const[activeBio, Bio] = useState("");
-    const[activeBros, Bros] = useState("");
-    const[activeBestbros, Bestbros] = useState("");
+    // const[activeBio, Bio] = useState("");
+    // const[activeBros, Bros] = useState("");
+    // const[activeBestbros, Bestbros] = useState("");
 
     const getData=async()=>{
-        const response=await axios.get(`http://localhost:8080/api/users/?email=${sessionStorage.getItem("email")}`);
+        const response=await axios.get(`http://localhost:8080/api/users/active?email=${sessionStorage.getItem("email")}`);
         sessionStorage.setItem("username", response.data[0].username);
         Username(sessionStorage.getItem("username"))
         sessionStorage.setItem("bio", response.data[0].bio);
-        Bio(sessionStorage.getItem("bio"));
+        // Bio(sessionStorage.getItem("bio"));
         sessionStorage.setItem("bros", JSON.stringify(response.data[0].bros));
-        Bros(sessionStorage.getItem("bros"));
+        // Bros(sessionStorage.getItem("bros"));
         sessionStorage.setItem("bestbros", response.data[0].bestbros);
-        Bestbros(sessionStorage.getItem("bestbros"));
+        // Bestbros(sessionStorage.getItem("bestbros"));
     }
 
-    
     getData()
     
     // Set Date
@@ -65,14 +63,21 @@ const Home = () => {
         window.location.reload()
     }
 
+    const gotoProfile  = ( ) => {
+        window.location = "/profile"
+    }
+    const gotoUsers = ( ) => {
+        window.location = "/users"
+    }
+
     try{
     return(
 
         <div className="mainContainer">
             <div className="postContainer">
                 <h1>Home.</h1>
-                <h2>{activeUsername}</h2>
-                <h3>{activeBio}</h3>
+                <button onClick={gotoProfile}>profile</button>
+                <button onClick={gotoUsers}>bros</button>
                 <form onSubmit={handleSubmit}>
                     <input name = 'post' onChange = {handleChange}></input>
                     <button type="submit">Post</button>
