@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import logo from '../../logo.png'
@@ -6,7 +6,7 @@ import './index.css'
 
 function Login(){
 
-    // Login Program
+    const [error, setError] = useState("");
 
     const [data, setData] = useState ({
         email: "",
@@ -17,8 +17,6 @@ function Login(){
         setData({...data, [input.name]: input.value})
     }
     
-    const [error, setError] = useState("");
-
     const handleSubmit = async(e) => {
         e.preventDefault();
 
