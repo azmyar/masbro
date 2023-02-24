@@ -9,16 +9,20 @@ const Posts = () => {
 
     const[post,Post] = useState("");
 
-    setTimeout( async function () {
-        const tes = JSON.parse(sessionStorage.getItem("bros"))[0]
-        const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${tes}`);
-        Post(postsGet.data);
+    setTimeout( async function () { 
+
+        // for (let index = 0; index < JSON.parse(sessionStorage.getItem("bros")).length; index++) {
+            const tes = JSON.parse(sessionStorage.getItem("bros"))[0]
+            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${tes}`);
+            Post(postsGet.data);
+        // }
+        
     }, 500)
 
     for (let index = 0; index < post.length; index++) {
         brospost.push(post[index])
     }
-    
+
 
     // Return
     try{
