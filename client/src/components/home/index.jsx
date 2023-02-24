@@ -12,14 +12,15 @@ const Home = () => {
         window.location.reload()
     }
 
+
     // Fetch activeUser
-    const[activeUsername,Username] = useState("");
-    const[activeBio,Bio] = useState("");
-    const[activeBros,Bros] = useState("");
-    const[activeBestbros,Bestbros] = useState("");
+    const[activeUsername, Username] = useState("");
+    const[activeBio, Bio] = useState("");
+    const[activeBros, Bros] = useState("");
+    const[activeBestbros, Bestbros] = useState("");
 
     const getData=async()=>{
-        const response=await axios.get(`http://localhost:8080/api/users?email=${sessionStorage.getItem("email")}`);
+        const response=await axios.get(`http://localhost:8080/api/users/?email=${sessionStorage.getItem("email")}`);
         sessionStorage.setItem("username", response.data[0].username);
         Username(sessionStorage.getItem("username"))
         sessionStorage.setItem("bio", response.data[0].bio);
@@ -30,14 +31,12 @@ const Home = () => {
         Bestbros(sessionStorage.getItem("bestbros"));
     }
 
-    useEffect(()=>{
-        const activeUser = async() =>{
-            await getData()
-            getData()
-        }
-        activeUser()
-    },[]);
     
+    getData()
+    
+    // Set Date
+    const date = new Date()
+
     // Posting
     const [data, setPost] = useState ({
         username: "",
@@ -45,9 +44,6 @@ const Home = () => {
         post: "",
         bestbro: ""
     })
-
-    // Set Date
-    const date = new Date()
 
     const handleChange = ({currentTarget: input}) => {
         setPost({...data, 
@@ -76,7 +72,7 @@ const Home = () => {
             <div className="postContainer">
                 <h1>Home.</h1>
                 <h2>{activeUsername}</h2>
-                <h2>{activeBros}</h2>
+                <h3>{activeBio}</h3>
                 <form onSubmit={handleSubmit}>
                     <input name = 'post' onChange = {handleChange}></input>
                     <button type="submit">Post</button>

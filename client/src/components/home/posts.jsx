@@ -10,6 +10,7 @@ const Posts = () => {
     setTimeout( async function () {
         const tes = JSON.parse(sessionStorage.getItem("bros"))[0]
         const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${tes}`);
+        // const postsGet = await axios.get(`http://localhost:8080/api/post`);
         Post(postsGet.data);
     }, 500)
 
@@ -23,7 +24,9 @@ const Posts = () => {
                         ${post[i].username}
                         </div>`
         }
-        return <div dangerouslySetInnerHTML={{ __html : output}}/>
+        return (
+        <div dangerouslySetInnerHTML={{ __html : output}}/>
+        )
     } catch (error) {
         console.log(error)
     }
