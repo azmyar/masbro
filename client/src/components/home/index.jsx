@@ -12,7 +12,7 @@ const Home = () => {
     // const[activeBestbros, Bestbros] = useState("");
 
     const getData=async()=>{
-        const response=await axios.get(`http://localhost:8080/api/users/active?email=${sessionStorage.getItem("email")}`);
+        const response=await axios.get(`http://localhost:8080/api/users/active?email=${localStorage.getItem("email")}`);
         sessionStorage.setItem("username", response.data[0].username);
         Username(sessionStorage.getItem("username"))
         sessionStorage.setItem("bio", response.data[0].bio);

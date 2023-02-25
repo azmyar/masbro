@@ -11,16 +11,51 @@ const Users = () => {
         Post(postsGet.data);
     }, 500)
 
-    // Return
+    // Open Profile
+
+    const openProfile = (username, bio, bros) => {
+        sessionStorage.setItem("brosusername", username)
+        sessionStorage.setItem("brosbio", bio)
+        sessionStorage.setItem("brosbros", bros)
+        window.location ='/brosprofile'
+    }
+
+    const output = []
+
     try{
-        var output = ''
         for (let i = 0; i < post.length; i++) {
-            output += `<div class="login">
-                        ${post[i].username}
-                        </div>`
+
+            if (post[i].username != sessionStorage.getItem("username")){
+
+                if (sessionStorage.getItem("bros").includes(post[i].username)){
+                    output.push(
+                        <div>
+                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                <h3>{post[i].username}</h3>
+                        </div>
+                        <p>your bro</p>
+                        </div>
+                        )
+
+                } else {
+                    
+                    output.push(
+                        <div>
+                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                <h3>{post[i].username}</h3>
+                        </div>
+                        <p>not your bro</p>
+                        </div>)
+                }
+            }
+
         }
         return (
-        <div dangerouslySetInnerHTML={{ __html : output}}/>)
+        <div>
+
+            {output}
+        </div>
+        )
     } catch (error) {
         console.log(error)
     }

@@ -6,7 +6,7 @@ const Posts = () => {
 
     // Get bros post
 
-    const[post,Post] = useState("");
+    const[brospost,Post] = useState("");
 
     setTimeout( async function () { 
 
@@ -21,43 +21,81 @@ const Posts = () => {
         
     }, 500)
 
+    // Handle Change for Edit Post
+
+    const [post, setPost] = useState ({})
+
+    const handleChange = ({currentTarget: input}) => {
+        setPost(input.value)
+    }
+
+
+    // Edit Post
+
+    const [showDivs, setShowDivs] = useState(false);
+    const showEditPrompt = async() => {
+        setShowDivs(!showDivs);
+    }
+
+    const saveID = async(id) => {
+        sessionStorage.setItem('editID', id)
+    }
+
+    const editClick = async() => {
+        await axios.post(`http://localhost:8080/api/post/edit`, {_id:sessionStorage.getItem('editID'),post})
+        sessionStorage.removeItem('editID')
+        setShowDivs(!showDivs)
+    };
+
     // Delete Post
     
-        const output = [];
         const deleteClick = async(id) => {
             await axios.post(`http://localhost:8080/api/post/delete`, {_id:id})
         };
 
-
+    
+    const output = [];
     
     try{
-        for (let i = 0; i < post.length; i++) {
+        for (let i = 0; i < brospost.length; i++) {
 
-            if (post[i].username == sessionStorage.getItem("username")) {
 
+            if (brospost[i].username === sessionStorage.getItem('username')){
                 output.push(
                     <div className="login">
-                            {post[i].post}
-                            {post[i].date}
-                            {post[i].username}
-                            <button onClick={() => deleteClick(post[i]._id)}>
+                            {brospost[i].post}
+                            {brospost[i].date}
+                            {brospost[i].username}
+                            <button onClick={() => deleteClick(brospost[i]._id)}>
                             Delete
                             </button>
+                            <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
+                            Edit
+                            </button>
                     </div>
-                )
-                
-            } else {
-                output.push(
-                    <div className="login">
-                            {post[i].post}
-                            {post[i].date}
-                            {post[i].username}
-                    </div>
-                )
-            }
+                    )
+                }else{
+                    output.push(
+                        <div className="login">
+                                {brospost[i].post}
+                                {brospost[i].date}
+                                {brospost[i].username}
+                        </div>
+                    )
+                }
         }
         return (
         <div>
+                <div>
+                    {showDivs && (
+                    <div>
+                        <input onChange={handleChange}></input>
+                        <button onClick= {editClick}>
+                        Done
+                        </button>
+                    </div>)}
+                </div>
+
             {output}
         </div>
         )

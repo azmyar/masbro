@@ -1,4 +1,4 @@
-import Posts from './posts'
+import {Posts} from './posts'
 import { useState } from 'react';
 
 const Profile = () => {
@@ -16,10 +16,9 @@ const Profile = () => {
         <h1>{sessionStorage.getItem("username")}</h1>
         <h2>{sessionStorage.getItem("bio")}</h2>
         <h3>{sessionStorage.getItem("bros")}</h3>
-        <Posts/>
+        {Posts(sessionStorage.getItem("username"))}
         </div>
     )
-
 
 }
 
