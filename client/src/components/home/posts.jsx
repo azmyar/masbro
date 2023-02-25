@@ -5,14 +5,21 @@ import axios from 'axios'
 const Posts = () => {
 
     // Get bros post
+
     const brospost = []
 
     const[post,Post] = useState("");
 
     setTimeout( async function () { 
 
-            const tes = JSON.parse(sessionStorage.getItem("bros"))[1]
-            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${tes}`);
+            let bros = sessionStorage.getItem("username")
+            const tes = JSON.parse(sessionStorage.getItem("bros"))
+            for (let index = 0; index < tes.length; index++) {
+                bros += "&"
+                bros += tes[index]
+            }
+
+            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${bros}`);
             Post(postsGet.data);
         
     }, 500)

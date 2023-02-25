@@ -15,6 +15,7 @@ function SignUp(){
         email: '',
         password: '',
         bio: '',
+        bros: [],
         bestbros: []
     })
 
