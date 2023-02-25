@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from './components/home'
 import Login from './components/auth/login'
+import Bio from './components/home/bio'
 import Signup from './components/auth/signup'
 import Users from './components/users'
 import Profile from './components/profile'
@@ -20,6 +21,7 @@ function App (){
             }
             <Route path="/signup" exact element = {<Signup/>}/>
             <Route path="/login" exact element = {<Login/>}/>
+            <Route path="/bio" exact element = {<Bio/>}/>
             <Route path="/users" exact element = {<Users/>}/>
             <Route path="/brosprofile" exact element = {<BrosProfile/>}/>
             <Route path="/profile" exact element = {<Profile/>}/>

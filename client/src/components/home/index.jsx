@@ -24,7 +24,7 @@ const Home = () => {
     }
 
     getData()
-    
+
     // Set Date
     const date = new Date()
 
@@ -52,8 +52,6 @@ const Home = () => {
         }catch(error){
             console.log(error)
         }
-
-        // window.location.reload()
     }
 
     const gotoProfile  = ( ) => {
@@ -63,6 +61,7 @@ const Home = () => {
         window.location = "/users"
     }
 
+    // tes dong
     try{
     return(
 
@@ -73,7 +72,7 @@ const Home = () => {
                 <button onClick={gotoUsers}>bros</button>
                 <form onSubmit={handleSubmit}>
                     <input name = 'post' onChange = {handleChange}></input>
-                    <button type="submit">Post</button>
+                    <button type="submit" >Post</button>
                 </form>
                 <Posts/>
             </div>

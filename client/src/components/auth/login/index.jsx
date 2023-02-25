@@ -25,7 +25,13 @@ function Login(){
             const {data: res} = await axios.post(url, data);
             localStorage.setItem("token", res.data)
             localStorage.setItem("email", data.email);
+
+            const askBio = await axios.get(`http://localhost:8080/api/users/active?email=${data.email}`)
+            if (askBio.data[0].bio === ""){
+                window.location = "/bio"
+            } else {
             window.location = "/home"
+        }
         }catch(error){
             if (error.response &&
                 error.response.status >= 400 && 

@@ -43,4 +43,9 @@ router.post("/bebront", async (req,res) => {
     res.send()
 })
 
+router.post("/editbio", async (req,res) => {
+    await User.findOneAndUpdate({username:req.body.username}, {bio:req.body.bio})
+    res.send()
+})
+
 module.exports = router;

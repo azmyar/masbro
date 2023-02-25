@@ -42,9 +42,9 @@ const brosProfile = () => {
         <div>
         <h1>{sessionStorage.getItem("brosusername")}</h1>
         <h2>{sessionStorage.getItem("brosbio")}</h2>
+        {button}
         {Posts(sessionStorage.getItem("brosusername"))}
 
-        {button}
 
         </div>
 
