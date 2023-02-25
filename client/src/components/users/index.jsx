@@ -16,7 +16,7 @@ const Users = () => {
         var output = ''
         for (let i = 0; i < post.length; i++) {
             output += `<div class="login">
-                        ${JSON.stringify(post[i].username)}
+                        ${post[i].username}
                         </div>`
         }
         return (

@@ -5,13 +5,6 @@ import Posts from './posts'
 
 const Home = () => {
 
-    // Logout
-    const handleLogout = () =>{
-        localStorage.removeItem("token");
-        sessionStorage.clear();
-        window.location.reload()
-    }
-
     // Fetch activeUser
     const[activeUsername, Username] = useState("");
     // const[activeBio, Bio] = useState("");
@@ -25,7 +18,7 @@ const Home = () => {
         sessionStorage.setItem("bio", response.data[0].bio);
         // Bio(sessionStorage.getItem("bio"));
         sessionStorage.setItem("bros", JSON.stringify(response.data[0].bros));
-        // Bros(sessionStorage.getItem("bros"));
+        sessionStorage.getItem("bros");
         sessionStorage.setItem("bestbros", response.data[0].bestbros);
         // Bestbros(sessionStorage.getItem("bestbros"));
     }
@@ -60,7 +53,7 @@ const Home = () => {
             console.log(error)
         }
 
-        window.location.reload()
+        // window.location.reload()
     }
 
     const gotoProfile  = ( ) => {
@@ -82,7 +75,6 @@ const Home = () => {
                     <input name = 'post' onChange = {handleChange}></input>
                     <button type="submit">Post</button>
                 </form>
-                <button onClick={handleLogout}>Log out</button>
                 <Posts/>
             </div>
         </div>

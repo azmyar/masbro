@@ -1,12 +1,10 @@
 import './index.css'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
 
 const Posts = () => {
 
     // Get bros post
-
-    const brospost = []
 
     const[post,Post] = useState("");
 
@@ -18,28 +16,50 @@ const Posts = () => {
                 bros += "&username="
                 bros += tes[index]
             }
-            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${bros}`);
-            Post(postsGet.data);
+            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?${bros}`);
+            Post(postsGet.data.reverse());
         
     }, 500)
 
-    for (let index = 0; index < post.length; index++) {
-        brospost.push(post[index])
-    }
+    // Delete Post
+    
+        const output = [];
+        const deleteClick = async(id) => {
+            await axios.post(`http://localhost:8080/api/post/delete`, {_id:id})
+        };
 
 
-    // Return
+    
     try{
-        var output = ''
         for (let i = 0; i < post.length; i++) {
-            output += `<div class="login">
-                        ${post[i].post}
-                        ${post[i].date}
-                        ${post[i].username}
-                        </div>`
+
+            if (post[i].username == sessionStorage.getItem("username")) {
+
+                output.push(
+                    <div className="login">
+                            {post[i].post}
+                            {post[i].date}
+                            {post[i].username}
+                            <button onClick={() => deleteClick(post[i]._id)}>
+                            Delete
+                            </button>
+                    </div>
+                )
+                
+            } else {
+                output.push(
+                    <div className="login">
+                            {post[i].post}
+                            {post[i].date}
+                            {post[i].username}
+                    </div>
+                )
+            }
         }
         return (
-        <div dangerouslySetInnerHTML={{ __html : output}}/>
+        <div>
+            {output}
+        </div>
         )
     } catch (error) {
         console.log(error)
