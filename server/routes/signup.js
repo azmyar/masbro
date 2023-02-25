@@ -24,8 +24,23 @@ router.post("/",async(req,res) => {
 })
 
 router.get("/", async(req,res)=> {
-    const users = await User.find(req.query);
+    const users = await User.find();
     res.send(users)
+})
+
+router.get("/active", async(req,res)=> {
+    const user = await User.find(req.query);
+    res.send(user)
+})
+
+router.post("/bebro", async (req,res) => {
+    await User.findOneAndUpdate({username:req.body.username}, {$push: {bros:req.body.bro}})
+    res.send()
+})
+
+router.post("/bebront", async (req,res) => {
+    await User.findOneAndUpdate({username:req.body.username}, {$pull: {bros:req.body.bro}})
+    res.send()
 })
 
 module.exports = router;

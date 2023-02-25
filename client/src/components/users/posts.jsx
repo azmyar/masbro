@@ -1,24 +1,16 @@
-import './index.css'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Posts = () => {
+export const Posts = (source) => {
 
     // Get bros post
-
     const[brospost,Post] = useState("");
 
-    setTimeout( async function () { 
-
-            let bros = "username=" + sessionStorage.getItem("username")
-            const tes = JSON.parse(sessionStorage.getItem("bros"))
-            for (let index = 0; index < tes.length; index++) {
-                bros += "&username="
-                bros += tes[index]
-            }
-            const postsGet = await axios.get(`http://localhost:8080/api/post/bros?${bros}`);
-            Post(postsGet.data.reverse());
-        
+    setTimeout( async function () {
+        const active = source
+        const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${active}`); // render bros only posts
+        // const postsGet = await axios.get(`http://localhost:8080/api/post`); // render every posts
+        Post(postsGet.data.reverse());
     }, 500)
 
     // Handle Change for Edit Post
@@ -29,6 +21,7 @@ const Posts = () => {
         setPost(input.value)
     }
 
+    const output = [];
 
     // Edit Post
 
@@ -48,17 +41,14 @@ const Posts = () => {
     };
 
     // Delete Post
-    
-        const deleteClick = async(id) => {
-            await axios.post(`http://localhost:8080/api/post/delete`, {_id:id})
-        };
+    const deleteClick = async(id) => {
+        await axios.post(`http://localhost:8080/api/post/delete`, {_id:id})
+    };
 
-    
-    const output = [];
-    
+
+    // Return
     try{
         for (let i = 0; i < brospost.length; i++) {
-
 
             if (brospost[i].username === sessionStorage.getItem('username')){
                 output.push(
@@ -103,5 +93,3 @@ const Posts = () => {
         console.log(error)
     }
 }
-
-export default Posts

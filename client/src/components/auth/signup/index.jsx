@@ -6,6 +6,10 @@ import './index.css'
 
 function SignUp(){
 
+    const navigate = useNavigate();
+
+    const [error, setError] = useState(""); 
+
     const [data, setData] = useState ({
         username: '',
         email: '',
@@ -19,9 +23,6 @@ function SignUp(){
         setData({...data, [input.name]: input.value})
     }
 
-    const [error, setError] = useState(""); 
-    const navigate = useNavigate();
-
     const handleSubmit = async(e) => {
         e.preventDefault();
 
@@ -29,15 +30,12 @@ function SignUp(){
             const url = "http://localhost:8080/api/users"
             const {data: res} = await axios.post(url,data);
             navigate("/login")
-            console.log(res.message)
         }catch(error){
             if (error.response &&
                 error.response.status >= 400 && 
                 error.response.status <= 500
                 ){
-
                     setError(error.response.data.message)
-
                 }
         }
     }

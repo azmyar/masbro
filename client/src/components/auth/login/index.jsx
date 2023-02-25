@@ -6,7 +6,7 @@ import './index.css'
 
 function Login(){
 
-    // Login Program
+    const [error, setError] = useState("");
 
     const [data, setData] = useState ({
         email: "",
@@ -16,9 +16,7 @@ function Login(){
     const handleChange = ({currentTarget: input}) => {
         setData({...data, [input.name]: input.value})
     }
-
-    const [error, setError] = useState("");
-
+    
     const handleSubmit = async(e) => {
         e.preventDefault();
 
@@ -26,7 +24,7 @@ function Login(){
             const url = "http://localhost:8080/api/auth"
             const {data: res} = await axios.post(url, data);
             localStorage.setItem("token", res.data)
-            sessionStorage.setItem("email", data.email);
+            localStorage.setItem("email", data.email);
             window.location = "/home"
         }catch(error){
             if (error.response &&
