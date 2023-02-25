@@ -12,13 +12,12 @@ const Posts = () => {
 
     setTimeout( async function () { 
 
-            let bros = sessionStorage.getItem("username")
+            let bros = "username=" + sessionStorage.getItem("username")
             const tes = JSON.parse(sessionStorage.getItem("bros"))
             for (let index = 0; index < tes.length; index++) {
-                bros += "&"
+                bros += "&username="
                 bros += tes[index]
             }
-
             const postsGet = await axios.get(`http://localhost:8080/api/post/bros?username=${bros}`);
             Post(postsGet.data);
         
