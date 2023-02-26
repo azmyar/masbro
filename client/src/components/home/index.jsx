@@ -1,5 +1,5 @@
 import './index.css'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
 import Posts from './posts'
 
@@ -22,24 +22,22 @@ const Home = () => {
         sessionStorage.setItem("bestbros", response.data[0].bestbros);
         // Bestbros(sessionStorage.getItem("bestbros"));
     }
-
+    
     getData()
 
     // Set Date
     const date = new Date()
 
     // Posting
-    const [data, setPost] = useState ({
-        username: "",
-        date: "",
-        post: "",
-        bestbro: ""
-    })
+
+    const [bestBro, Switching] = useState (false)
+
+    const [data, setPost] = useState ({})
 
     const handleChange = ({currentTarget: input}) => {
-        setPost({...data, 
+        setPost({ 
             username: activeUsername,
-            date:`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`, 
+            date:`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
             [input.name]: input.value})
     }
 
@@ -48,7 +46,7 @@ const Home = () => {
         
         try{
             const url = "http://localhost:8080/api/post/"
-            await axios.post(url, data)
+            await axios.post(url, {...data,bestbro:bestBro})
         }catch(error){
             console.log(error)
         }
@@ -74,6 +72,8 @@ const Home = () => {
                     <input name = 'post' onChange = {handleChange}></input>
                     <button type="submit" >Post</button>
                 </form>
+                <input type="checkbox" checked={bestBro} onChange={()=>Switching(!bestBro)}></input>
+                <p>Best Bro only</p>
                 <Posts/>
             </div>
         </div>

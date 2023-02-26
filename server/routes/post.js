@@ -12,7 +12,7 @@ router.post("/delete", async (req,res) => {
 })
 
 router.post("/edit", async (req,res) => {
-    const a = await Post.findOneAndUpdate({_id:req.body._id}, {post:req.body.post})
+    await Post.findOneAndUpdate({_id:req.body._id}, {post:req.body.post})
     res.send()
 })
 

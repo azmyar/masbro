@@ -1,12 +1,11 @@
 import {Posts} from './posts'
-import { useState } from 'react';
 
 const Profile = () => {
 
     // Logout
     const handleLogout = () =>{
-        localStorage.removeItem("token");
         sessionStorage.clear();
+        localStorage.clear()
         window.location = '/home'
     }
 

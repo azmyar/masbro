@@ -4,11 +4,10 @@ const bcrypt = require('bcrypt');
 
 router.post("/",async(req,res) => {
     try{
-        const {error} = validate(req.body);
-
+        console.log(error)
         if(error)
             return res.status(400).send({message: error.details[0].message});
-
+            
         const user = await User.findOne({email:req.body.email});
         if(user)
             return res.status(409).send({message: "User with given email already exist"})
@@ -40,6 +39,12 @@ router.post("/bebro", async (req,res) => {
 
 router.post("/bebront", async (req,res) => {
     await User.findOneAndUpdate({username:req.body.username}, {$pull: {bros:req.body.bro}})
+    await User.findOneAndUpdate({username:req.body.username}, {$pull: {bestbros:req.body.bro}})
+    res.send()
+})
+
+router.post("/bebestbro", async (req,res) => {
+    await User.findOneAndUpdate({username:req.body.username}, {$push: {bestbros:req.body.bro}})
     res.send()
 })
 

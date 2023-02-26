@@ -8,7 +8,7 @@ const Users = () => {
 
     setTimeout( async function () {
         const postsGet = await axios.get(`http://localhost:8080/api/users`);
-        Post(postsGet.data);
+        Post(postsGet.data.reverse());
     }, 500)
 
     // Open Profile

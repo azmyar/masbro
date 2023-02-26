@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     username: {type: String},
     post: {type: String, required:true},
     date: {type: String},
-    bestbro: {type: String},
+    bestbro: {type: Boolean},
 });
 
 const Post = mongoose.model("post", userSchema);
