@@ -16,7 +16,8 @@ function SignUp(){
         password: '',
         bio: '',
         bros: [],
-        bestbros: []
+        bestbros: [],
+        bestbroingme: []
     })
 
     const handleChange = ({currentTarget: input}) => {

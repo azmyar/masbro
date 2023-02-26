@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 
 router.post("/",async(req,res) => {
     try{
-        console.log(error)
+        const {error} = validate(req.body);
+
         if(error)
             return res.status(400).send({message: error.details[0].message});
             
@@ -40,10 +41,12 @@ router.post("/bebro", async (req,res) => {
 router.post("/bebront", async (req,res) => {
     await User.findOneAndUpdate({username:req.body.username}, {$pull: {bros:req.body.bro}})
     await User.findOneAndUpdate({username:req.body.username}, {$pull: {bestbros:req.body.bro}})
+    await User.findOneAndUpdate({username:req.body.bro}, {$pull: {bestbroingme:req.body.username}})
     res.send()
 })
 
 router.post("/bebestbro", async (req,res) => {
+    await User.findOneAndUpdate({username:req.body.bro}, {$push: {bestbroingme:req.body.username}})
     await User.findOneAndUpdate({username:req.body.username}, {$push: {bestbros:req.body.bro}})
     res.send()
 })

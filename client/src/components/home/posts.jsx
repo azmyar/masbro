@@ -57,33 +57,74 @@ const Posts = () => {
     const output = [];
     
     try{
-        for (let i = 0; i < brospost.length; i++) {
+       
+                for (let i = 0; i < brospost.length; i++) {
 
+                    const bestBroValidation = sessionStorage.getItem("bestbroingme").includes(brospost[i].username)
 
-            if (brospost[i].username === sessionStorage.getItem('username')){
-                output.push(
-                    <div className="login">
-                            {brospost[i].post}
-                            {brospost[i].date}
-                            {brospost[i].username}
-                            <button onClick={() => deleteClick(brospost[i]._id)}>
-                            Delete
-                            </button>
-                            <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
-                            Edit
-                            </button>
-                    </div>
-                    )
-                }else{
-                    output.push(
-                        <div className="login">
-                                {brospost[i].post}
-                                {brospost[i].date}
-                                {brospost[i].username}
-                        </div>
-                    )
+                    if (brospost[i].username === sessionStorage.getItem('username')){
+                        
+                        if (brospost[i].bestbro){
+                            output.push(
+                                <div>
+                                <div className="login">
+                                        {brospost[i].post}
+                                        {brospost[i].date}
+                                        {brospost[i].username}
+                                        <button onClick={() => deleteClick(brospost[i]._id)}>
+                                        Delete
+                                        </button>
+                                        <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
+                                        Edit
+                                        </button>
+                                </div>
+                                <div>this is private</div>
+                                </div>
+                                )
+
+                        }else {
+                                    output.push(
+                                    <div className="login">
+                                        {brospost[i].post}
+                                        {brospost[i].date}
+                                        {brospost[i].username}
+                                        <button onClick={() => deleteClick(brospost[i]._id)}>
+                                        Delete
+                                        </button>
+                                        <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
+                                        Edit
+                                        </button>
+                                    </div>)
+                                }
+
+                    }
+                    else if (brospost[i].bestbro && !bestBroValidation){}
+                    else{
+                            
+                            if (brospost[i].bestbro){
+
+                                output.push(
+                                    <div>
+                                    <div className="login">
+                                            {brospost[i].post}
+                                            {brospost[i].date}
+                                            {brospost[i].username}
+                                    </div>
+                                    <div>this is private</div>
+                                    </div>
+
+                                )}else {
+                                    output.push(
+                                    <div className="login">
+                                            {brospost[i].post}
+                                            {brospost[i].date}
+                                            {brospost[i].username}
+                                    </div>)
+                                }
+                            }
+                                    
                 }
-        }
+
         return (
         <div>
                 <div>

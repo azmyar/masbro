@@ -32,16 +32,18 @@ const brosProfile = () => {
 
     const button = []
 
-    if (sessionStorage.getItem("bros").includes(sessionStorage.getItem("brosusername"))){
+    
+
+    if (sessionStorage.getItem("bestbros").includes(sessionStorage.getItem("brosusername"))){
+        button.push(
+            <button onClick={() => beBront(sessionStorage.getItem("brosusername"))}>Be Bron't</button>
+        )
+    } else if (sessionStorage.getItem("bros").includes(sessionStorage.getItem("brosusername"))) {
         button.push(
             <div>
             <button onClick={() => beBestBro(sessionStorage.getItem("brosusername"))}>Be BestBro</button>
             <button onClick={() => beBront(sessionStorage.getItem("brosusername"))}>Be Bron't</button>
             </div>
-        )
-    } else if (sessionStorage.getItem("bestbros").includes(sessionStorage.getItem("brosusername"))) {
-        button.push(
-            <button onClick={() => beBront(sessionStorage.getItem("brosusername"))}>Be Bron't</button>
         )
     } else {
         button.push(

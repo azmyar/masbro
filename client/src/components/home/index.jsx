@@ -19,8 +19,10 @@ const Home = () => {
         // Bio(sessionStorage.getItem("bio"));
         sessionStorage.setItem("bros", JSON.stringify(response.data[0].bros));
         sessionStorage.getItem("bros");
-        sessionStorage.setItem("bestbros", response.data[0].bestbros);
+        sessionStorage.setItem("bestbros", JSON.stringify(response.data[0].bestbros));
         // Bestbros(sessionStorage.getItem("bestbros"));
+        sessionStorage.setItem("bestbroingme", JSON.stringify(response.data[0].bestbroingme));
+
     }
     
     getData()

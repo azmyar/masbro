@@ -50,8 +50,9 @@ export const Posts = (source) => {
     try{
         for (let i = 0; i < brospost.length; i++) {
 
-            if (brospost[i].username === sessionStorage.getItem('username')){
+            if (brospost[i].bestbro){
                 output.push(
+                    <div>
                     <div className="login">
                             {brospost[i].post}
                             {brospost[i].date}
@@ -63,16 +64,25 @@ export const Posts = (source) => {
                             Edit
                             </button>
                     </div>
+                    <div>this is private</div>
+                    </div>
                     )
-                }else{
-                    output.push(
+
+            }else {
+                        output.push(
                         <div className="login">
-                                {brospost[i].post}
-                                {brospost[i].date}
-                                {brospost[i].username}
-                        </div>
-                    )
-                }
+                            {brospost[i].post}
+                            {brospost[i].date}
+                            {brospost[i].username}
+                            <button onClick={() => deleteClick(brospost[i]._id)}>
+                            Delete
+                            </button>
+                            <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
+                            Edit
+                            </button>
+                        </div>)
+                    }
+    
         }
         return (
         <div>

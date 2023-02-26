@@ -27,18 +27,26 @@ const Users = () => {
 
             if (post[i].username != sessionStorage.getItem("username")){
 
-                if (sessionStorage.getItem("bros").includes(post[i].username)){
+                if (sessionStorage.getItem("bestbros").includes(post[i].username)){
                     output.push(
                         <div>
                         <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
                                 <h3>{post[i].username}</h3>
                         </div>
-                        <p>your bro</p>
+                        <p>your best bro</p>
                         </div>
                         )
 
-                } else {
+                } else if (sessionStorage.getItem("bros").includes(post[i].username)){
                     
+                    output.push(
+                        <div>
+                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                <h3>{post[i].username}</h3>
+                        </div>
+                        <p>your regular bro</p>
+                        </div>)
+                } else {
                     output.push(
                         <div>
                         <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
