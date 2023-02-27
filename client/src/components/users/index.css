@@ -1,6 +1,113 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+.user-post{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: auto;
+    min-height: 80px;
+    background-color: #5B4132;
+    margin-bottom:30px;
+    border-radius: 25px;
+    color: #EFEAE4;
+    font-family: 'Poppins';
+    font-size: 15pt;
+}
 
+.user-bro {
+    cursor: pointer;
+    border: none !important;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 12pt;
+    background-color: #5B4132;
+    color: #EFEAE4;
+    width: auto;
+    height: 35px;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.user-bront {
+    cursor: pointer;
+    border: 2px solid;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 12pt;
+    background-color: #EFEAE4;
+    color: #5B4132;
+    width: auto;
+    height: 37px;
+    border-radius: 15px;
+    margin-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.post-users {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right:auto;
+    margin-top:25px;
+    height: 30px;
+}
+    .profile-user-picture {
+        margin-left:20px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .post-username {
+        margin-left:10px;
+        font-weight: 600;
+    }
+
+    .post-date {
+        margin-left:10px;
+        font-weight: 400;
+        font-size: 15px;
+
+    }
+    .post-bestbro {
+        margin-left:10px;
+        width: 20px;
+        height: 19px;
+    }
+
+    .post-word {
+        margin-left:23px;
+        margin-right:23px;
+        font-weight: 400;
+        font-size: 17px;
+
+    }
+
+    .post-buttons {
+        margin-right:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left:auto
+    }
+
+        .post-edit {
+            cursor: pointer;
+            height: 25px;
+            width: 25px;
+        }
+
+        .post-delete {
+            cursor: pointer;
+            margin-left:5px;
+            height: 25px;
+            width: 25px;
+        }
+        
 .users-container {
     overflow: auto;
     background-color: #EFEAE4;

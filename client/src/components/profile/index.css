@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+
 .user-post{
     display: flex;
     flex-direction: column;
@@ -14,13 +15,14 @@
     font-size: 15pt;
 }
 
-.post {
+.post{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top:25px;
     height: 30px;
+    width: 100%;
 }
     .profile-user-picture {
         margin-left:20px;
@@ -47,6 +49,7 @@
 
     .post-word {
         margin-left:23px;
+        margin-right:23px;
         font-weight: 400;
         font-size: 17px;
 
@@ -79,7 +82,8 @@
     align-content: center;
     justify-content: center;
     margin-right:auto;
-    margin-left:35px
+    margin-left:30px;
+    margin-top:140px
 }
 
 .profile-username {
@@ -100,28 +104,33 @@
     border: none !important;
     font-family: 'Poppins';
     font-weight: 600;
-    font-size: 13pt;
+    font-size: 12pt;
     background-color: #5B4132;
     color: #EFEAE4;
-    width: 90px;
-    height: 37px;
-    border-radius: 10px;
+    width: auto;
+    height: 35px;
+    border-radius: 15px;
     margin-top: 5px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px
 }
 
 .profile-logout {
     cursor: pointer;
-    border: none;
+    border: 2px solid;
     padding-left: 10px;
-    background-color: #EFEAE4;
     font-family: 'Poppins';
     font-weight: 600;
-    font-size: 13pt;
+    font-size: 12pt;
+    background-color: #EFEAE4;
     color: #5B4132;
     width: auto;
-    height: 40px;
-    border-radius: 10px;
+    height: 37px;
+    border-radius: 15px;
     margin-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px
 }
 
 .profile-picture {
@@ -130,14 +139,22 @@
 }
 
 .profile-bio {
-    width: 520px;
+    max-width: 530px;
     font-family: 'Poppins';
     font-weight: 400;
+    margin:0;
+    margin-right:auto;
+    margin-left:55px;
+    margin-bottom: 40px;
 }
 
 .main-container {
     position: absolute;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-container {
@@ -145,16 +162,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     height: 100%;
     width: 100%;
 }
 
 .profile-form-container {
+    word-wrap: break-word;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     height: 100%;
     width: 650px
 }

@@ -37,7 +37,7 @@ const Profile = () => {
                 <div className="profile-form-container">
 
                     <div className='profile-main'>
-                        <img src={profile} className="profile-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                        <img src={profile} className="profile-picture" alt="status"></img>                            
                         <div className='profile-username-container'>
                             <p className='profile-username'>{sessionStorage.getItem("username")}</p>
                             <div className='profile-button'>
@@ -46,9 +46,8 @@ const Profile = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <p className='profile-bio'>{sessionStorage.getItem("bio")}</p>
-                    </div>
+                    <p className='profile-bio'>{sessionStorage.getItem("bio")}</p>
+
 
                     {Posts(sessionStorage.getItem("username"))}
 

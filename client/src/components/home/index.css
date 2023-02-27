@@ -1,9 +1,99 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
+.user-post{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: auto;
+    min-height: 80px;
+    background-color: #5B4132;
+    margin-bottom:30px;
+    border-radius: 25px;
+    color: #EFEAE4;
+    font-family: 'Poppins';
+    font-size: 15pt;
+}
+
+.post{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top:25px;
+    height: 30px;
+    width: 100%;
+}
+
+.post-users {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right:auto;
+    margin-top:25px;
+    height: 30px;
+}
+
+    .profile-user-picture {
+        margin-left:20px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .post-username {
+        margin-left:10px;
+        font-weight: 600;
+    }
+
+    .post-date {
+        margin-left:10px;
+        font-weight: 400;
+        font-size: 15px;
+        margin-top: 18px;
+
+    }
+    .post-bestbro {
+        margin-left:10px;
+        width: 20px;
+        height: 19px;
+    }
+
+    .post-word {
+        margin-left:23px;
+        margin-right:23px;
+        font-weight: 400;
+        font-size: 17px;
+
+    }
+
+    .post-buttons {
+        margin-right:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left:auto
+    }
+
+        .post-edit {
+            cursor: pointer;
+            height: 25px;
+            width: 25px;
+        }
+
+        .post-delete {
+            cursor: pointer;
+            margin-left:5px;
+            height: 25px;
+            width: 25px;
+        }
+
+
 .bio-container {
+    position: fixed;
+    z-index: 1;
     background-color: #EFEAE4;
     display: flex;
-    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    top: 0; right: 0; bottom: 0; left: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -12,7 +102,8 @@
 }
 
 .bio-form-container {
-    margin-bottom: 50px;
+    position: fixed;
+    margin-bottom: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,17 +118,26 @@
         color:#38302B;
         font-family: 'Poppins';
         font-weight: 600;
-        font-size:60px;
+        font-size:100px;
+        margin-bottom: 0px;
+        margin-right: auto;
+    }
+
+    .post-title {
+        position: relative;
+        color:#38302B;
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size:100px;
         margin-bottom: 15px;
-        margin-left: 10px;
-        margin-right: auto
+        margin-right: auto;
     }
 
     .bio-box {
         resize: none;
         font-family: 'Poppins';
         font-weight: 500;
-        font-size: 15px;
+        font-size: 20px;
         background-color: #EFEAE4;
         border: 2px solid #38302B;
         border-radius: 15px;
@@ -45,8 +145,9 @@
         width: 630px;
         padding-top: 15px;
         padding-left: 15px;
+        padding-right: 15px;
     }
-
+    
     .bio-box:focus {
         outline:none;
     }
@@ -56,25 +157,30 @@
     display: flex;
     flex-direction: row;
     justify-content: right;
+    align-items: center;
     height: auto;
     width: 650px
 
 }
 
     .bio-submit {
+        cursor: pointer;
         border: none !important;
         font-family: 'Poppins';
         font-weight: 600;
         font-size: 15pt;
         background-color: #5B4132;
         color: #EFEAE4;
-        width: 100px;
+        width: auto;
         height: 40px;
         border-radius: 10px;
         margin-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .bio-skip {
+        cursor: pointer;
         border: none;
         margin-left: 5px;
         padding-left: 10px;
@@ -90,18 +196,67 @@
         margin-top: 15px;
     }
 
+    .post-bestbro-check {
+        width: 20px;
+        height: 20px;
+        margin-top: 15px;
+        accent-color: #38302B
+    }
+    
+    .post-bestbro-text {
+        color: #5B4132;
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 14pt;
+        margin-top: 32px;
+        margin-right:auto;
+        margin-left:10px
+    }
+
+
+.home-title-container {
+    margin-top: 93px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    height:200px;}
+
+    .home-post-button {
+        cursor: pointer;
+        width: 80px;
+        height: 73px;
+    }
+
+    .home-title {
+            position: relative;
+            color:#38302B;
+            font-family: 'Poppins';
+            font-weight: 600;
+            font-size:110px;
+    }
 
 .mainContainer {
+    overflow: auto;
+    background-color:#EFEAE4 ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+
 }
 
-
 .postContainer {
+    
+    position: absolute;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 650px
 }
 
 .login {
@@ -116,3 +271,33 @@
     margin-top: 15px
 }
 
+.navigation {
+    position: sticky;
+    top : 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+    .menu {
+        padding-right: 35px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo {
+        padding-left: 35px;
+        width: 106px;
+        height: 95px;
+        cursor: pointer
+    }
+
+    .navigation-buttons {
+        margin-bottom:20px;
+        width: 70px;
+        height: 70px;
+        cursor: pointer
+    }

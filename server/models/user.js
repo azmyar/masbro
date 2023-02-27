@@ -25,7 +25,17 @@ const validate = (data) => {
     const schema = Joi.object({
         username: Joi.string().required().label('username'),
         email: Joi.string().email().required().label('email'),
-        password: passwordComplexity().required().label('password'),
+        password: passwordComplexity(
+            {
+                min: 8,
+                max: 26,
+                lowerCase: 1,
+                upperCase: 1,
+                numeric: 1,
+                symbol: 0,
+                requirementCount: 4,
+            }
+        ).required().label('password'),
         bio: '',
         bros: Joi.array(),
         bestbros: Joi.array(),

@@ -2,11 +2,17 @@
 
 .link {
     text-decoration: none;
+    font-weight: 500;
 }
+
+.link:visited { 
+    text-decoration: none; 
+    color: #38302B; 
+   }
 
 .signup {
     font-family: 'Poppins';
-    font-weight: 500;
+    font-weight: 400;
     color: #271E19
 }
 

@@ -4,6 +4,7 @@ import userpict from '../img/user-pict.png'
 import edit from '../img/edit.png'
 import postdelete from '../img/delete.png'
 import bestbro from '../img/bestbro.png'
+import './index.css'
 
 export const Posts = (source) => {
 
@@ -61,10 +62,10 @@ export const Posts = (source) => {
                                 <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
-                                <img src={bestbro} className="post-bestbro" alt="status"></img>                            
+                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
                                 <div className="post-buttons">
-                                    <img src={edit} className="post-edit" alt="status" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
-                                    <img src={postdelete} className="post-delete" alt="status" onClick={() => deleteClick(brospost[i]._id)}></img>                            
+                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={postdelete} className="post-delete" alt="status" title="Delete" onClick={() => deleteClick(brospost[i]._id)}></img>                            
                                 </div>
                             </div>
                             <p className="post-word">{brospost[i].post}</p>
@@ -78,8 +79,8 @@ export const Posts = (source) => {
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
                                 <div className="post-buttons">
-                                    <img src={edit} className="post-edit" alt="status" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
-                                    <img src={postdelete} className="post-delete" alt="status" onClick={() => deleteClick(brospost[i]._id)}></img>                            
+                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={postdelete} className="post-delete" alt="status" title="Delete" onClick={() => deleteClick(brospost[i]._id)}></img>                            
                                 </div>
                             </div>
                             <p className="post-word">{brospost[i].post}</p>

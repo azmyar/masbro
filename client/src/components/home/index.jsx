@@ -3,6 +3,12 @@ import {useState} from 'react'
 import axios from 'axios'
 import Posts from './posts'
 
+import logo from '../img/logo.png'
+
+import profile from '../img/profile.png'
+import home from '../img/home.png'
+import bros from '../img/bros.png'
+
 const Home = () => {
 
     // Fetch activeUser
@@ -27,55 +33,72 @@ const Home = () => {
     
     getData()
 
-    // Set Date
-    const date = new Date()
+    // Hide Show
 
-    // Posting
+    const [showPost, setShowDivs] = useState(false);
+    const showPostPrompt = async() => {
+        setShowDivs(!showPost);
+    }
+
+    // Posting Program
 
     const [bestBro, Switching] = useState (false)
 
-    const [data, setPost] = useState ({})
+    const date = new Date()
 
-    const handleChange = ({currentTarget: input}) => {
-        setPost({ 
-            username: activeUsername,
-            date:`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
-            [input.name]: input.value})
-    }
+    const [inputVal, setInputVal] = useState("")
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        
+    const post = async() => {
         try{
             const url = "http://localhost:8080/api/post/"
-            await axios.post(url, {...data,bestbro:bestBro})
+            await axios.post(url, {post:inputVal,bestbro:bestBro,username: sessionStorage.getItem("username"),
+            date:`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`})
         }catch(error){
             console.log(error)
         }
-    }
+        showPostPrompt()        
+    };
 
-    const gotoProfile  = ( ) => {
-        window.location = "/profile"
-    }
-    const gotoUsers = ( ) => {
-        window.location = "/users"
-    }
-
-    // tes dong
+    // Return
     try{
     return(
 
         <div className="mainContainer">
+
+            {showPost && (
+                    <div className="bio-container">
+
+                    <div className="bio-form-container">
+        
+                        <h1 className='post-title'>post.</h1>
+                        <textarea className='bio-box' name ="post" placeholder="pour your thoughts." onChange={e => setInputVal(e.target.value)}></textarea>
+                        <div className='bio-button-container'>
+        
+                            <input type="checkbox" class="post-bestbro-check"checked={bestBro} onChange={()=>Switching(!bestBro)}></input>
+                            <p class="post-bestbro-text">Best Bro Only</p>
+        
+                            <button className='bio-submit' onClick={() => post()}>post</button>
+                            <button className='bio-skip' onClick={() => showPostPrompt()} >cancel</button>
+                        </div>
+        
+                    </div>
+                </div>)}
+
+            <div className='navigation'>
+                <img src={logo} className="logo" alt="status" onClick={() => window.location.replace("/home")}></img>                            
+                <div className='menu'>
+                    <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>                            
+                    <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>                            
+                    <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                </div>
+            </div>
+
+
             <div className="postContainer">
-                <h1>Home.</h1>
-                <button onClick={gotoProfile}>profile</button>
-                <button onClick={gotoUsers}>bros</button>
-                <form onSubmit={handleSubmit}>
-                    <input name = 'post' onChange = {handleChange}></input>
-                    <button type="submit" >Post</button>
-                </form>
-                <input type="checkbox" checked={bestBro} onChange={()=>Switching(!bestBro)}></input>
-                <p>Best Bro only</p>
+                <div className='home-title-container'>
+                    <p className='home-title'>home.</p>
+                    <img src={logo} className="home-post-button" alt="status" onClick={() => showPostPrompt()}></img>                            
+                </div>
                 <Posts/>
             </div>
         </div>

@@ -1,5 +1,8 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import userpict from '../img/user-pict.png'
+import bestbro from '../img/bestbro.png'
+import './index.css'
 
 export const Posts = (source) => {
 
@@ -58,21 +61,25 @@ export const Posts = (source) => {
                         if (brospost[i].bestbro){
 
                             output.push(
-                                <div>
-                                <div className="login">
-                                        {brospost[i].post}
-                                        {brospost[i].date}
-                                        {brospost[i].username}
-                                </div>
-                                <div>this is private</div>
-                                </div>
+                                <div className="user-post">
+                            <div className="post-users">
+                                <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                                <p className="post-username">{brospost[i].username}</p>
+                                <p className="post-date">{brospost[i].date}</p>
+                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
+                            </div>
+                            <p className="post-word">{brospost[i].post}</p>
+                        </div>
 
                             )}else {
                                 output.push(
-                                <div className="login">
-                                        {brospost[i].post}
-                                        {brospost[i].date}
-                                        {brospost[i].username}
+                                    <div className="user-post">
+                                    <div className="post-users">
+                                        <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                                        <p className="post-username">{brospost[i].username}</p>
+                                        <p className="post-date">{brospost[i].date}</p>
+                                    </div>
+                                    <p className="post-word">{brospost[i].post}</p>
                                 </div>)
                             
                 }}

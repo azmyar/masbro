@@ -47,7 +47,7 @@ const Users = () => {
                             <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
                                     <img src={userpict} className="profile-pict" alt="profile-pict"></img>
                                     <h3>{post[i].username}</h3>
-                                    <img src={bestbro} className="status" alt="status"></img>                            
+                                    <img src={bestbro} className="status" alt="status" title='Your Best Bro'></img>                            
                             </div>
                             
                         </div>
@@ -60,16 +60,16 @@ const Users = () => {
                             <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
                                     <img src={userpict} className="profile-pict" alt="profile-pict"></img>
                                     <h3>{post[i].username}</h3>
-                                    <img src={bro} className="status" alt="status"></img>                            
+                                    <img src={bro} className="status" alt="status" title='Your Regular Bro'></img>                            
                                     </div>
                         </div>)
                 } else {
                     output.push(
                         <div>
                             <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
-                                    <img src={userpict} className="profile-pict" alt="profile-pict"></img>
+                                    <img src={userpict} className="profile-pict" alt="profile-pict" ></img>
                                     <h3>{post[i].username}</h3>
-                                    <img src={bront} className="status" alt="status"></img>                            
+                                    <img src={bront} className="status" alt="status" title='Not Your Bro'></img>                            
                             </div>
                         </div>)
                 }

@@ -42,10 +42,12 @@ const Bio = () => {
 
             <div className="bio-form-container">
 
-                <h1 className='bio-title'>add your bio.</h1>
-                <textarea className='bio-box' value={inputVal} onChange={e => setInputVal(e.target.value)}></textarea>
+                <h1 className='bio-title'>bio.</h1>
+                <textarea className='bio-box' placeholder="write your bio." onChange={e => setInputVal(e.target.value)}>
+                {sessionStorage.getItem("bio")}
+                </textarea>
                 <div className='bio-button-container'>
-                    <button className='bio-submit' onClick={() => editBio()} disabled={!inputVal}>done</button>
+                    <button className='bio-submit' onClick={() => editBio()}>done</button>
                     <button className='bio-skip' onClick={goHome} >skip</button>
                 </div>
 
