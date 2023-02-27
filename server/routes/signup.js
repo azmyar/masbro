@@ -8,10 +8,15 @@ router.post("/",async(req,res) => {
 
         if(error)
             return res.status(400).send({message: error.details[0].message});
+
+        const username = await User.findOne({username:req.body.username});
+        if(username)
+            return res.status(409).send({message: "Username is not available"})
             
-        const user = await User.findOne({email:req.body.email});
-        if(user)
+        const email = await User.findOne({email:req.body.email});
+        if(email)
             return res.status(409).send({message: "User with given email already exist"})
+
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password,salt);
 

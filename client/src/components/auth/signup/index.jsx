@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom';
-import logo from '../../logo.png'
+import logo from '../../img/logo.png'
 import axios from 'axios'
-import './index.css'
+import '../index.css'
 
 function SignUp(){
 
@@ -41,26 +41,34 @@ function SignUp(){
         }
     }
 
-    return (
-        <div className="container">
-            
-            <div className="div-illustration">
-            </div>
+    const message = []
 
+    if (error) {
+        message.push(<div class="talk-bubble tri-right round btm-left">
+        <div class="talktext">
+            <p>{error}, bro.</p>
+        </div>
+        </div>)
+    } else {
+        message.push(
+            <p className="greeting">welcome, bro.</p>
+        )
+    }
+
+    return (
+        <div className="main-container">
+        
             <div className="div-login">
 
-                <Link to='/login'>
-                    <button className="login" >Log In</button>
-                </Link>
-
                 <form className="form" onSubmit={handleSubmit}>
-                    <img src={logo} className="logo" alt="logo"></img>
-                    <p className="greeting">fill to sign up</p>
+                    <img src={logo} className="auth-logo" alt="logo"></img>
+                    {message}
+
 
                     <input
                         type="text" 
                         placeholder="Username" 
-                        className="input" 
+                        className="inputs" 
                         name="username"
                         onChange = {handleChange}
                         value={data.username}
@@ -70,7 +78,7 @@ function SignUp(){
                     <input
                         type="email" 
                         placeholder="Email" 
-                        className="input" 
+                        className="inputs" 
                         name="email"
                         onChange = {handleChange}
                         value={data.email}
@@ -80,18 +88,16 @@ function SignUp(){
                     <input
                         type="password" 
                         placeholder="Password" 
-                        className="input" 
+                        className="inputs" 
                         name="password"
                         onChange = {handleChange}
                         value={data.password}
                         required
                     />
 
-                    {error && <div>{error}</div>}
+                    <button type="submit" className="submit" >Sign Up</button>
 
-                    <button type="submit" className="login" >Sign Up</button>
-
-                    <p>don't have an account? Sign Up</p>
+                    <p className="signup">Already have an account? <Link to='/login' className="link">Log In</Link></p>
                 </form>
             </div>
 

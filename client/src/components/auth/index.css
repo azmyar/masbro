@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+
+.link {
+    text-decoration: none;
+}
+
+.signup {
+    font-family: 'Poppins';
+    font-weight: 500;
+    color: #271E19
+}
+
+.main-container {
+    background-color: #EFEAE4;
+    display: flex;
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+.form {
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 800px;
+    height: 800px;
+}
+
+    .auth-logo {
+        width: 179.86px;
+        height: 157.44px;
+        margin-left: 20px;
+    }
+
+    .greeting {
+        color:#38302B;
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size:50px;
+        margin: 0 0 0 0;
+        margin-top: 15px
+    }
+
+    .inputs {
+        font-family: 'Poppins';
+        font-weight: 500;
+        font-size: 15px;
+        width: 385px;
+        height: 55px;
+        border-radius: 18px;
+        background-color: #EFEAE4;
+        border: 2px solid #38302B;
+        margin-top: 15px;
+        padding-left:15px;
+    }
+
+    .inputs::placeholder {
+        color: #938D87;
+    }
+
+    .submit {
+        border: none !important;
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 15pt;
+        background-color: #5B4132;
+        color: #EFEAE4;
+        width: 402px;
+        height: 57px;
+        border-radius: 18px;
+        margin-top: 15px;
+    }
+
+  
+/* CSS talk bubble */
+.talk-bubble {
+    margin: 0 0 0 0;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: lightyellow;
+}
+
+.talktext{
+    border-radius: 25px;
+    background-color: #5B4132;
+    padding: 1em;
+        text-align: left;
+    line-height: 1.5em;
+}
+
+.talktext p{
+    /* remove webkit p margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-family: 'Poppins';
+    font-weight: 500;
+    color: #EFEAE4
+}
+
+.round{
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+
+}
+
+.tri-right.btm-left:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 20px;
+    top: auto;
+    bottom: 34px;
+    border: 22px solid;
+    border-color: transparent transparent transparent #5B4132;
+}
+  
+  
+
+/* @media screen and (max-width:910px){
+    .div-illustration {
+        display: none;
+      }
+    
+    .div-login {
+        width: 100%;
+        height: 100%;
+    }
+} */

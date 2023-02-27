@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
-import logo from '../../logo.png'
-import './index.css'
+import logo from '../../img/logo.png'
+import '../index.css'
 
 function Login(){
 
@@ -42,19 +42,35 @@ function Login(){
         }
     }
 
+    const message = []
+
+    if (error) {
+        message.push(<div class="talk-bubble tri-right round btm-left">
+        <div class="talktext">
+            <p>{error}, bro.</p>
+        </div>
+        </div>)
+    } else {
+        message.push(
+            <p className="greeting">hello, bro.</p>
+        )
+    }
+
     return (
-        <div className="container">
-        
-            <div className="div-login">
+        <div>
+        <div className='main-container'>
+
+            <div>
 
                 <form className="form" onSubmit={handleSubmit}>
-                    <img src={logo} className="logo" alt="logo"></img>
-                    <p className="greeting">welcome, bro.</p>
-                
+                    
+                    <img src={logo} className="auth-logo" alt="logo"></img>
+                    {message}
+
                     <input
                         type="email" 
                         placeholder="Email" 
-                        className="input" 
+                        className="inputs" 
                         name="email"
                         onChange = {handleChange}
                         value={data.email}
@@ -64,24 +80,21 @@ function Login(){
                     <input
                         type="password" 
                         placeholder="Password" 
-                        className="input" 
+                        className="inputs" 
                         name="password"
                         onChange = {handleChange}
                         value={data.password}
                         required
                     />
 
-                    {error && <div>{error}</div>}
 
-                    <button type="submit" className="login" >Login</button>
+                    <button type="submit" className="submit" >Login</button>
         
                     <p className="signup">Don't have an account? <Link to='/signup' className="link">Sign Up</Link></p>
                 </form>
-            </div>
 
-            <div className="div-illustration">
             </div>
-
+        </div>
         </div>
       )
 }

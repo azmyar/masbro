@@ -1,5 +1,19 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
+import './index.css'
+
+import userpict from '../img/user-pict.png'
+
+import logo from '../img/logo.png'
+
+import profile from '../img/profile.png'
+import home from '../img/home.png'
+import bros from '../img/bros.png'
+
+import bro from '../img/bro.png'
+import bestbro from '../img/bestbro.png'
+import bront from '../img/bront.png'
+
 
 const Users = () => {
 
@@ -25,15 +39,17 @@ const Users = () => {
     try{
         for (let i = 0; i < post.length; i++) {
 
-            if (post[i].username != sessionStorage.getItem("username")){
+            if (post[i].username !== sessionStorage.getItem("username")){
 
                 if (sessionStorage.getItem("bestbros").includes(post[i].username)){
                     output.push(
                         <div>
-                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
-                                <h3>{post[i].username}</h3>
-                        </div>
-                        <p>your best bro</p>
+                            <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                    <img src={userpict} className="profile-pict" alt="profile-pict"></img>
+                                    <h3>{post[i].username}</h3>
+                                    <img src={bestbro} className="status" alt="status"></img>                            
+                            </div>
+                            
                         </div>
                         )
 
@@ -41,28 +57,42 @@ const Users = () => {
                     
                     output.push(
                         <div>
-                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
-                                <h3>{post[i].username}</h3>
-                        </div>
-                        <p>your regular bro</p>
+                            <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                    <img src={userpict} className="profile-pict" alt="profile-pict"></img>
+                                    <h3>{post[i].username}</h3>
+                                    <img src={bro} className="status" alt="status"></img>                            
+                                    </div>
                         </div>)
                 } else {
                     output.push(
                         <div>
-                        <div className="login" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
-                                <h3>{post[i].username}</h3>
-                        </div>
-                        <p>not your bro</p>
+                            <div className="user-card" onClick={() => openProfile(post[i].username, post[i].bio, post[i].bros)}>
+                                    <img src={userpict} className="profile-pict" alt="profile-pict"></img>
+                                    <h3>{post[i].username}</h3>
+                                    <img src={bront} className="status" alt="status"></img>                            
+                            </div>
                         </div>)
                 }
             }
 
         }
-        return (
-        <div>
+        return (            
+            <div className="users-container">
 
-            {output}
-        </div>
+                <div className='navigation'>
+                        <img src={logo} className="logo" alt="status" onClick={() => window.location.replace("/home")}></img>                            
+                        <div className='menu'>
+                            <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>                            
+                            <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>                            
+                            <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                        </div>
+                </div>
+
+                <div className="users-list-container">
+                    <p className='users-title'>bros.</p>
+                    {output}
+                </div>
+            </div>
         )
     } catch (error) {
         console.log(error)

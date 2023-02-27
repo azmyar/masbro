@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
-
+import "./index.css"
 
 const Bio = () => {
 
@@ -38,11 +38,18 @@ const Bio = () => {
     };
 
     return(
-        <div>
-        <h1>add your bio.</h1>
-        <input value={inputVal} onChange={e => setInputVal(e.target.value)}></input>
-        <button onClick={() => editBio()} disabled={!inputVal}>Done</button>
-        <button onClick={goHome} >skip for now</button>
+        <div className="bio-container">
+
+            <div className="bio-form-container">
+
+                <h1 className='bio-title'>add your bio.</h1>
+                <textarea className='bio-box' value={inputVal} onChange={e => setInputVal(e.target.value)}></textarea>
+                <div className='bio-button-container'>
+                    <button className='bio-submit' onClick={() => editBio()} disabled={!inputVal}>done</button>
+                    <button className='bio-skip' onClick={goHome} >skip</button>
+                </div>
+
+            </div>
         </div>
     )
 

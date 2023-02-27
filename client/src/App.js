@@ -11,22 +11,34 @@ function App (){
     const user = localStorage.getItem("token")
     return(
         <Routes>
-            {
-            user && 
-            <Route path="/" exact element={<Home/>} />
-            }
-            {
-            user && 
-            <Route path="/home" exact element={<Home/>} />
-            }
+            {user && 
+            <Route path="/" exact element={<Home/>} />}
+            <Route path="/" exact element = {<Navigate replace to="/login"/>}/>
+
+            {user && 
+            <Route path="/home" exact element={<Home/>} />}
+            <Route path="/home" exact element = {<Navigate replace to="/login"/>}/>
+
+            {user && 
+            <Route path="/bio" exact element={<Bio/>} />}
+            <Route path="/bio" exact element = {<Navigate replace to="/login"/>}/>
+
+            {user && 
+            <Route path="/users" exact element={<Users/>} />}
+            <Route path="/users" exact element = {<Navigate replace to="/login"/>}/>
+            
+            {user && 
+            <Route path="/brosprofile" exact element={<BrosProfile/>} />}
+            <Route path="/brosprofile" exact element = {<Navigate replace to="/login"/>}/>
+
+            {user && 
+            <Route path="/profile" exact element={<Profile/>} />}
+            <Route path="/profile" exact element = {<Navigate replace to="/login"/>}/>
+
+
             <Route path="/signup" exact element = {<Signup/>}/>
             <Route path="/login" exact element = {<Login/>}/>
-            <Route path="/bio" exact element = {<Bio/>}/>
-            <Route path="/users" exact element = {<Users/>}/>
-            <Route path="/brosprofile" exact element = {<BrosProfile/>}/>
-            <Route path="/profile" exact element = {<Profile/>}/>
-            <Route path="/home" exact element = {<Navigate replace to="/login"/>}/>
-            <Route path="/" exact element = {<Navigate replace to="/login"/>}/>
+
         </Routes>
     )
 }

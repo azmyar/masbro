@@ -15,11 +15,20 @@ const Profile = () => {
 
     return(
         <div>
-        <button onClick={handleLogout}>Log out</button>
-        <button onClick={editBio}>Edit bio</button>
-        <h1>{sessionStorage.getItem("username")}</h1>
-        <h2>{sessionStorage.getItem("bio")}</h2>
-        {Posts(sessionStorage.getItem("username"))}
+        <div className="bio-container">
+
+            <div className="bio-form-container">
+
+                <button onClick={handleLogout}>Log out</button>
+                <button onClick={editBio}>Edit bio</button>
+                <h1>{sessionStorage.getItem("username")}</h1>
+                <h2>{sessionStorage.getItem("bio")}</h2>
+                {Posts(sessionStorage.getItem("username"))}
+
+            </div>
+
+        
+        </div>
         </div>
     )
 
