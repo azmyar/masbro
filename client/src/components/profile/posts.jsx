@@ -1,5 +1,9 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import userpict from '../img/user-pict.png'
+import edit from '../img/edit.png'
+import postdelete from '../img/delete.png'
+import bestbro from '../img/bestbro.png'
 
 export const Posts = (source) => {
 
@@ -52,34 +56,33 @@ export const Posts = (source) => {
 
             if (brospost[i].bestbro){
                 output.push(
-                    <div>
-                    <div className="login">
-                            {brospost[i].post}
-                            {brospost[i].date}
-                            {brospost[i].username}
-                            <button onClick={() => deleteClick(brospost[i]._id)}>
-                            Delete
-                            </button>
-                            <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
-                            Edit
-                            </button>
-                    </div>
-                    <div>this is private</div>
-                    </div>
-                    )
+                        <div className="user-post">
+                            <div className="post">
+                                <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                                <p className="post-username">{brospost[i].username}</p>
+                                <p className="post-date">{brospost[i].date}</p>
+                                <img src={bestbro} className="post-bestbro" alt="status"></img>                            
+                                <div className="post-buttons">
+                                    <img src={edit} className="post-edit" alt="status" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={postdelete} className="post-delete" alt="status" onClick={() => deleteClick(brospost[i]._id)}></img>                            
+                                </div>
+                            </div>
+                            <p className="post-word">{brospost[i].post}</p>
+                        </div>)
 
             }else {
                         output.push(
-                        <div className="login">
-                            {brospost[i].post}
-                            {brospost[i].date}
-                            {brospost[i].username}
-                            <button onClick={() => deleteClick(brospost[i]._id)}>
-                            Delete
-                            </button>
-                            <button onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}>
-                            Edit
-                            </button>
+                        <div className="user-post">
+                            <div className="post">
+                                <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                                <p className="post-username">{brospost[i].username}</p>
+                                <p className="post-date">{brospost[i].date}</p>
+                                <div className="post-buttons">
+                                    <img src={edit} className="post-edit" alt="status" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={postdelete} className="post-delete" alt="status" onClick={() => deleteClick(brospost[i]._id)}></img>                            
+                                </div>
+                            </div>
+                            <p className="post-word">{brospost[i].post}</p>
                         </div>)
                     }
     

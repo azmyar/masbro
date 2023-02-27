@@ -1,7 +1,148 @@
-.bio-container {
-    background-color: #EFEAE4;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+.user-post{
     display: flex;
-    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    flex-direction: column;
+    width: 550px;
+    height: auto;
+    min-height: 80px;
+    background-color: #5B4132;
+    margin-bottom:30px;
+    border-radius: 25px;
+    color: #EFEAE4;
+    font-family: 'Poppins';
+    font-size: 15pt;
+}
+
+.post {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top:25px;
+    height: 30px;
+}
+    .profile-user-picture {
+        margin-left:20px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .post-username {
+        margin-left:10px;
+        font-weight: 600;
+    }
+
+    .post-date {
+        margin-left:10px;
+        font-weight: 400;
+        font-size: 15px;
+
+    }
+    .post-bestbro {
+        margin-left:10px;
+        width: 20px;
+        height: 19px;
+    }
+
+    .post-word {
+        margin-left:23px;
+        font-weight: 400;
+        font-size: 17px;
+
+    }
+
+    .post-buttons {
+        margin-right:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left:auto
+    }
+
+        .post-edit {
+            cursor: pointer;
+            height: 25px;
+            width: 25px;
+        }
+
+        .post-delete {
+            cursor: pointer;
+            margin-left:5px;
+            height: 25px;
+            width: 25px;
+        }
+
+.profile-main{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    margin-right:auto;
+    margin-left:35px
+}
+
+.profile-username {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size:60px;
+}
+
+.profile-button{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-edit-bio {
+    cursor: pointer;
+    border: none !important;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 13pt;
+    background-color: #5B4132;
+    color: #EFEAE4;
+    width: 90px;
+    height: 37px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.profile-logout {
+    cursor: pointer;
+    border: none;
+    padding-left: 10px;
+    background-color: #EFEAE4;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 13pt;
+    color: #5B4132;
+    width: auto;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.profile-picture {
+    height: 150px;
+    width: 150px;
+}
+
+.profile-bio {
+    width: 520px;
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+.main-container {
+    position: absolute;
+    overflow: auto;
+}
+
+.profile-container {
+    overflow: auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -9,18 +150,16 @@
     width: 100%;
 }
 
-.bio-form-container {
-    top: 0; right: 0; bottom: 0; left: 0;
+.profile-form-container {
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #EFEAE4;
     height: 100%;
     width: 650px
 }
 
-    .bio-title {
+    .profile-title {
         position: relative;
         color:#38302B;
         font-family: 'Poppins';
@@ -31,7 +170,7 @@
         margin-right: auto
     }
 
-    .bio-box {
+    .profile-box {
         font-family: 'Poppins';
         font-weight: 500;
         font-size: 15px;
@@ -44,46 +183,37 @@
         padding-left: 15px;
     }
 
-    .bio-box:focus {
+    .profile-box:focus {
         outline:none;
     }
 
-.bio-button-container {
-    top: 0; right: 0; bottom: 0; left: 0;
+.navigation {
+    position: sticky;
+    top : 40px;
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    height: auto;
-    width: 650px
-
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
 }
 
-    .bio-submit {
-        border: none !important;
-        font-family: 'Poppins';
-        font-weight: 600;
-        font-size: 15pt;
-        background-color: #5B4132;
-        color: #EFEAE4;
-        width: 100px;
-        height: 40px;
-        border-radius: 10px;
-        margin-top: 15px;
+    .menu {
+        padding-right: 35px;
+        display: flex;
+        flex-direction: column;
     }
 
-    .bio-skip {
-        margin-left: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border: 2px solid;
-        background-color: #EFEAE4;
-        border-color: #5B4132;
-        font-family: 'Poppins';
-        font-weight: 600;
-        font-size: 15pt;
-        color: #5B4132;
-        width: auto;
-        height: 40px;
-        border-radius: 10px;
-        margin-top: 15px;
+    .logo {
+        padding-left: 35px;
+        width: 106px;
+        height: 95px;
+        cursor: pointer
+    }
+
+    .navigation-buttons {
+        margin-bottom:20px;
+        width: 70px;
+        height: 70px;
+        cursor: pointer
     }
