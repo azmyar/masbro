@@ -9,6 +9,8 @@ import profile from '../img/profile.png'
 import home from '../img/home.png'
 import bros from '../img/bros.png'
 
+import postLogo from '../img/post.png'
+
 const Home = () => {
 
     // Fetch activeUser
@@ -97,7 +99,7 @@ const Home = () => {
             <div className="postContainer">
                 <div className='home-title-container'>
                     <p className='home-title'>home.</p>
-                    <img src={logo} className="home-post-button" alt="status" onClick={() => showPostPrompt()}></img>                            
+                    <img src={postLogo} className="home-post-button" alt="status" onClick={() => showPostPrompt()} title="Post"></img>                            
                 </div>
                 <Posts/>
             </div>

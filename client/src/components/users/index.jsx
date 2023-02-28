@@ -35,6 +35,7 @@ const Users = () => {
     }
 
     const output = []
+    const message =[]
 
     try{
         for (let i = 0; i < post.length; i++) {
@@ -76,6 +77,13 @@ const Users = () => {
             }
 
         }
+
+        if (output.length === 0){
+            message.push (<div className="users-message">no bros yet.<br/>invite your friends to join masbro.</div>)
+        } else {
+            message.push ('')
+        }
+
         return (            
             <div className="users-container">
 
@@ -90,6 +98,7 @@ const Users = () => {
 
                 <div className="users-list-container">
                     <p className='users-title'>bros.</p>
+                    {message}
                     {output}
                 </div>
             </div>

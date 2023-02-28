@@ -48,7 +48,6 @@ const Profile = () => {
                     </div>
                     <p className='profile-bio'>{sessionStorage.getItem("bio")}</p>
 
-
                     {Posts(sessionStorage.getItem("username"))}
 
                 </div>

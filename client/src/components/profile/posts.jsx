@@ -18,31 +18,25 @@ export const Posts = (source) => {
         Post(postsGet.data.reverse());
     }, 500)
 
-    // Handle Change for Edit Post
-
-    const [post, setPost] = useState ({})
-
-    const handleChange = ({currentTarget: input}) => {
-        setPost(input.value)
-    }
-
-    const output = [];
-
+    
     // Edit Post
+    const [post, setInputVal] = useState("")
 
     const [showDivs, setShowDivs] = useState(false);
-    const showEditPrompt = async() => {
+    const showEditPrompt = () => {
         setShowDivs(!showDivs);
     }
 
-    const saveID = async(id) => {
+    const saveID = async(id, post) => {
         sessionStorage.setItem('editID', id)
+        sessionStorage.setItem('editPost', post)
     }
 
     const editClick = async() => {
         await axios.post(`http://localhost:8080/api/post/edit`, {_id:sessionStorage.getItem('editID'),post})
+        setInputVal("")
         sessionStorage.removeItem('editID')
-        setShowDivs(!showDivs)
+        showEditPrompt()
     };
 
     // Delete Post
@@ -52,6 +46,9 @@ export const Posts = (source) => {
 
 
     // Return
+    const output = []
+    const message = []
+
     try{
         for (let i = 0; i < brospost.length; i++) {
 
@@ -62,9 +59,9 @@ export const Posts = (source) => {
                                 <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
-                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
+                                <img src={bestbro} className="post-bestbro" alt="status" title="For Best Bro Only"></img>                            
                                 <div className="post-buttons">
-                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id,brospost[i].post)}}></img>                            
                                     <img src={postdelete} className="post-delete" alt="status" title="Delete" onClick={() => deleteClick(brospost[i]._id)}></img>                            
                                 </div>
                             </div>
@@ -79,7 +76,7 @@ export const Posts = (source) => {
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
                                 <div className="post-buttons">
-                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id)}}></img>                            
+                                    <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id,brospost[i].post)}}></img>                            
                                     <img src={postdelete} className="post-delete" alt="status" title="Delete" onClick={() => deleteClick(brospost[i]._id)}></img>                            
                                 </div>
                             </div>
@@ -88,18 +85,34 @@ export const Posts = (source) => {
                     }
     
         }
+        if (output.length === 0){
+            message.push (<div className="home-message">no posts yet.</div>)
+        } else {
+            message.push ('')
+        }
         return (
         <div>
                 <div>
                     {showDivs && (
-                    <div>
-                        <input onChange={handleChange}></input>
-                        <button onClick= {editClick}>
-                        Done
-                        </button>
-                    </div>)}
-                </div>
+                    <div className="bio-container">
 
+                    <div className="bio-form-container">
+        
+                        <h1 className='bio-title'>edit.</h1>
+                        <textarea className='bio-box' defaultValue={sessionStorage.getItem("editPost")} onChange={e => setInputVal(e.target.value)}>
+                        </textarea>
+                        <div className='bio-button-container'>
+                            <button className='bio-submit' onClick={() => editClick()}>done</button>
+                            <button className='bio-skip' onClick={() => showEditPrompt()} >cancel</button>
+                        </div>
+        
+                    </div>
+                    </div>
+                    )}
+                </div>
+                <hr/>
+
+            {message}
             {output}
         </div>
         )

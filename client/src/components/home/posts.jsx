@@ -1,5 +1,6 @@
 import './index.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom';
 import axios from 'axios'
 import userpict from '../img/user-pict.png'
 import edit from '../img/edit.png'
@@ -55,11 +56,10 @@ const Posts = () => {
 
     
     const output = [];
+    const message = []
     
     try{
-       
                 for (let i = 0; i < brospost.length; i++) {
-
                     const bestBroValidation = sessionStorage.getItem("bestbroingme").includes(brospost[i].username)
 
                     if (brospost[i].username === sessionStorage.getItem('username')){
@@ -71,7 +71,7 @@ const Posts = () => {
                                 <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
-                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
+                                <img src={bestbro} className="post-bestbro" alt="status" title="For Best Bro Only"></img>                            
                                 <div className="post-buttons">
                                     <img src={edit} className="post-edit" alt="status" title="Edit" onClick={() => {showEditPrompt(); saveID(brospost[i]._id, brospost[i].post)}}></img>                            
                                     <img src={postdelete} className="post-delete" alt="status" title="Delete" onClick={() => deleteClick(brospost[i]._id)}></img>                            
@@ -109,7 +109,7 @@ const Posts = () => {
                                 <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
-                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
+                                <img src={bestbro} className="post-bestbro" alt="status" title="For Best Bro Only"></img>                            
                             </div>
                             <p className="post-word">{brospost[i].post}</p>
                         </div>
@@ -130,6 +130,12 @@ const Posts = () => {
                                     
                 }
 
+                if (output.length === 0){
+                    message.push (<div className="home-message">no posts yet.<br/>start posting or try adding some <Link to='/users' className="link">bros</Link></div>)
+                } else {
+                    message.push ('')
+                }
+
         return (
         <div>
                 <div>
@@ -139,7 +145,7 @@ const Posts = () => {
                     <div className="bio-form-container">
         
                         <h1 className='bio-title'>edit.</h1>
-                        <textarea className='bio-box' defaultValue={sessionStorage.getItem("editPost")} placeholder="write your bio." onChange={e => setInputVal(e.target.value)}>
+                        <textarea className='bio-box' defaultValue={sessionStorage.getItem("editPost")} onChange={e => setInputVal(e.target.value)}>
                         </textarea>
                         <div className='bio-button-container'>
                             <button className='bio-submit' onClick={() => editClick()}>done</button>
@@ -150,7 +156,7 @@ const Posts = () => {
                     </div>
                     )}
                 </div>
-
+            {message}
             {output}
         </div>
         )

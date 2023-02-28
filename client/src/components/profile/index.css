@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+hr{
+    border: none;
+    background: #38302B;
+    height: 2px;
+    width: 550px; 
+    margin-bottom: 30px;
+}
 
 .user-post{
     display: flex;
@@ -145,7 +152,7 @@
     margin:0;
     margin-right:auto;
     margin-left:55px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 }
 
 .main-container {
@@ -236,3 +243,24 @@
         height: 70px;
         cursor: pointer
     }
+
+@media screen and (max-width:1000px){
+    .navigation {
+        margin-top: 0px !important;
+        position: absolute !important;
+    }
+
+    .navigation-buttons {
+        z-index: 2;
+        margin-left: 20px;
+    }
+
+    .logo {
+        height: 73px !important;
+        width: 80px !important;
+    }
+
+    .menu {
+        flex-direction: row !important;
+    }
+}

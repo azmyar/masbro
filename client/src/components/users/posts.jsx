@@ -16,38 +16,8 @@ export const Posts = (source) => {
         Post(postsGet.data.reverse());
     }, 500)
 
-    // Handle Change for Edit Post
-
-    const [post, setPost] = useState ({})
-
-    const handleChange = ({currentTarget: input}) => {
-        setPost(input.value)
-    }
-
     const output = [];
-
-    // Edit Post
-
-    const [showDivs, setShowDivs] = useState(false);
-    const showEditPrompt = async() => {
-        setShowDivs(!showDivs);
-    }
-
-    const saveID = async(id) => {
-        sessionStorage.setItem('editID', id)
-    }
-
-    const editClick = async() => {
-        await axios.post(`http://localhost:8080/api/post/edit`, {_id:sessionStorage.getItem('editID'),post})
-        sessionStorage.removeItem('editID')
-        setShowDivs(!showDivs)
-    };
-
-    // Delete Post
-    const deleteClick = async(id) => {
-        await axios.post(`http://localhost:8080/api/post/delete`, {_id:id})
-    };
-
+    const message = []
 
     // Return
     try{
@@ -66,7 +36,7 @@ export const Posts = (source) => {
                                 <img src={userpict} className="profile-user-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                                 <p className="post-username">{brospost[i].username}</p>
                                 <p className="post-date">{brospost[i].date}</p>
-                                <img src={bestbro} className="post-bestbro" alt="status" title="Best Bro Only"></img>                            
+                                <img src={bestbro} className="post-bestbro" alt="status" title="For Best Bro Only"></img>                            
                             </div>
                             <p className="post-word">{brospost[i].post}</p>
                         </div>
@@ -84,18 +54,15 @@ export const Posts = (source) => {
                             
                 }}
         }
+        if (output.length === 0){
+            message.push (<div className="home-message">no posts yet.</div>)
+        } else {
+            message.push ('')
+        }
         return (
         <div>
-                <div>
-                    {showDivs && (
-                    <div>
-                        <input onChange={handleChange}></input>
-                        <button onClick= {editClick}>
-                        Done
-                        </button>
-                    </div>)}
-                </div>
-
+            <hr/>
+            {message}
             {output}
         </div>
         )
