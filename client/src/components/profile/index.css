@@ -244,6 +244,8 @@ hr{
         cursor: pointer
     }
 
+/* Responsiveness */
+
 @media screen and (max-width:1000px){
     .navigation {
         margin-top: 0px !important;
@@ -251,8 +253,11 @@ hr{
     }
 
     .navigation-buttons {
+        width: 65px !important;
+        height: 65px !important;
         z-index: 2;
         margin-left: 20px;
+
     }
 
     .logo {
@@ -263,4 +268,32 @@ hr{
     .menu {
         flex-direction: row !important;
     }
+
+    .home-title-container {
+        margin-top: 105px;}
+
+    
+}
+
+@media screen and (max-width:800px){
+    .user-post{
+        width: 500px !important;
+    }
+
+    .home-title-container {
+        margin-top: 105px;
+        width: 500px;}
+
+    .home-title {
+        font-size:100px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .user-post{
+        width: 450px !important;
+    }
+
+    .home-title-container {
+        width: 450px;}
 }
