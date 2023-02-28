@@ -24,16 +24,16 @@ You should have a folder called `ristek-masbro-main` stored in your local.
 Open terminal in `ristek-masbro-main`, then execute this code
 
 ```shell
-$ cd server
-$ npm i bcrypt body-parser cors dotenv express joi joi-password-complexity jsonwebtoken mongoose nodemon
+cd server
+npm i bcrypt body-parser cors dotenv express joi joi-password-complexity jsonwebtoken mongoose nodemon
 ```
 
 #### 2. `Frontend` side
 Open terminal in `ristek-masbro-main`, then execute this code
 
 ```shell
-$ cd client
-$ npm i axios react-scripts react-router-dom
+cd client
+npm i axios react-scripts react-router-dom
 ```
 
 ### 3. Initialization
@@ -42,16 +42,16 @@ $ npm i axios react-scripts react-router-dom
 Open terminal in `ristek-masbro-main`, then execute this code
 
 ```shell
-$ cd server
-$ npm start
+cd server
+npm start
 ```
 
 #### 2. `Frontend` side
 Open terminal in `ristek-masbro-main`, then execute this code
 
 ```shell
-$ cd client
-$ npm start
+cd client
+npm start
 ```
 
 # Architecture
