@@ -87,14 +87,23 @@ const Users = () => {
         return (            
             <div className="users-container">
 
-                <div className='navigation'>
-                        <img src={logo} className="logo" alt="status" onClick={() => window.location.replace("/home")}></img>                            
-                        <div className='menu'>
-                            <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>                            
-                            <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>                            
-                            <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
-                        </div>
+<div className='navigation'>
+                <img src={logo} className="logo" alt="status" onClick={() => window.location.replace("/home")}></img>                            
+                <div className='menu'>
+                    <div className='post-tooltip-parent'>
+                        <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>
+                        <span className="nav-tooltip">home.</span>  
+                    </div>    
+                    <div className='post-tooltip-parent'>
+                        <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>   
+                        <span className="nav-tooltip">bros.</span>
+                    </div>    
+                    <div className='post-tooltip-parent'>
+                        <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>  
+                        <span className="nav-tooltip">profile.</span>
+                    </div>                          
                 </div>
+            </div>
 
                 <div className="users-list-container">
                     <p className='users-title'>bros.</p>

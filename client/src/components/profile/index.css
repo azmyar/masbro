@@ -120,7 +120,14 @@ hr{
     margin-top: 5px;
     margin-right: 10px;
     padding-left: 15px;
-    padding-right: 15px
+    padding-right: 15px;
+    transition: .3s ease;
+}
+
+.profile-edit-bio:hover{
+    transform: scale(0.96);
+    -webkit-transform: scale(0.96);
+    -ms-transform: scale(0.96)
 }
 
 .profile-logout {
@@ -137,7 +144,14 @@ hr{
     border-radius: 15px;
     margin-top: 5px;
     padding-left: 15px;
-    padding-right: 15px
+    padding-right: 15px;
+    transition: .3s ease;
+}
+
+.profile-logout:hover{
+    transform: scale(0.96);
+    -webkit-transform: scale(0.96);
+    -ms-transform: scale(0.96)
 }
 
 .profile-picture {
@@ -245,55 +259,3 @@ hr{
     }
 
 /* Responsiveness */
-
-@media screen and (max-width:1000px){
-    .navigation {
-        margin-top: 0px !important;
-        position: absolute !important;
-    }
-
-    .navigation-buttons {
-        width: 65px !important;
-        height: 65px !important;
-        z-index: 2;
-        margin-left: 20px;
-
-    }
-
-    .logo {
-        height: 73px !important;
-        width: 80px !important;
-    }
-
-    .menu {
-        flex-direction: row !important;
-    }
-
-    .home-title-container {
-        margin-top: 105px;}
-
-    
-}
-
-@media screen and (max-width:800px){
-    .user-post{
-        width: 500px !important;
-    }
-
-    .home-title-container {
-        margin-top: 105px;
-        width: 500px;}
-
-    .home-title {
-        font-size:100px;
-    }
-}
-
-@media screen and (max-width:600px){
-    .user-post{
-        width: 450px !important;
-    }
-
-    .home-title-container {
-        width: 450px;}
-}

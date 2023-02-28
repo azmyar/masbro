@@ -70,6 +70,7 @@
     }
 
     .submit {
+        cursor: pointer;
         border: none !important;
         font-family: 'Poppins';
         font-weight: 600;
@@ -80,9 +81,16 @@
         height: 57px;
         border-radius: 18px;
         margin-top: 15px;
+
+        transition: .3s ease;
     }
 
-  
+    .submit:hover{
+        transform: scale(0.985);
+        -webkit-transform: scale(0.985);
+        -ms-transform: scale(0.985)
+    }
+
 /* CSS talk bubble */
 .talk-bubble {
     margin: 0 0 0 0;

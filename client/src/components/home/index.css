@@ -228,6 +228,66 @@
         cursor: pointer;
         width: 95px;
         height: 95px;
+        transition: .3s ease;
+    }
+
+    .home-post-button:hover{
+        transform: scale(0.96);
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96)
+    }
+
+    .post-tooltip-parent {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      
+    .post-tooltip-parent .post-tooltip {
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 12pt;
+        width: 70px;
+        background-color: #38302B;
+        color: #EFEAE4;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        margin-left: 190px;
+        margin-top: 26px;
+        
+        opacity: 0;
+        transition: opacity .3s ease;
+        position: absolute;
+        z-index: 1;
+    }
+    
+    .post-tooltip-parent:hover .post-tooltip {
+        opacity: 1;
+    }
+
+    .post-tooltip-parent .nav-tooltip {
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 12pt;
+        width: 70px;
+        background-color: #38302B;
+        color: #EFEAE4;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        margin-right: 180px;
+        margin-top: 20px;
+        
+        opacity: 0;
+        transition: opacity .3s ease;
+        position: absolute;
+        z-index: 1;
+    }
+    
+    .post-tooltip-parent:hover .nav-tooltip {
+        opacity: 1;
     }
 
     .home-title {
@@ -314,6 +374,14 @@
 /* Responsiveness */
 
 @media screen and (max-width:1000px){
+    .post-tooltip-parent:hover .nav-tooltip {
+        opacity: 0;
+    }
+
+    .post-tooltip-parent:hover .post-tooltip {
+        opacity: 0;
+    }
+
     .navigation {
         margin-top: 0px !important;
         position: absolute !important;
@@ -336,48 +404,11 @@
         flex-direction: row !important;
     }
 
+    /* Specific */
+
     .home-title-container {
-        margin-top: 105px;}
-
-    .home-message {
-        margin-left: 110px;
-    }
-
-    .users-message {
-        margin-left: 170px;
-    }
-
-    
+        margin-top: 150px;}
 }
 
-@media screen and (max-width:800px){
-    .user-post{
-        width: 500px !important;
-    }
-
-    .home-title-container {
-        margin-top: 105px;
-        width: 500px;}
-
-    .home-title {
-        font-size:100px;
-    }
-
-    .home-message {
-        margin-left: 160px;
-    }
-}
-
-@media screen and (max-width:600px){
-    .user-post{
-        width: 450px !important;
-    }
-
-    .home-title-container {
-        width: 450px;}
-
-    .home-message {
-        margin-left: 210px;
-    }
-
+@media screen and (max-width:1000px){
 }

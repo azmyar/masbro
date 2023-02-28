@@ -89,17 +89,29 @@ const Home = () => {
             <div className='navigation'>
                 <img src={logo} className="logo" alt="status" onClick={() => window.location.replace("/home")}></img>                            
                 <div className='menu'>
-                    <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>                            
-                    <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>                            
-                    <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
+                    <div className='post-tooltip-parent'>
+                        <img src={home} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/home")}></img>
+                        <span className="nav-tooltip">home.</span>  
+                    </div>    
+                    <div className='post-tooltip-parent'>
+                        <img src={bros} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/users")}></img>   
+                        <span className="nav-tooltip">bros.</span>
+                    </div>    
+                    <div className='post-tooltip-parent'>
+                        <img src={profile} className="navigation-buttons" alt="status" onClick={() => window.location.replace("/profile")}></img>  
+                        <span className="nav-tooltip">profile.</span>
+                    </div>                          
                 </div>
             </div>
-
 
             <div className="postContainer">
                 <div className='home-title-container'>
                     <p className='home-title'>home.</p>
-                    <img src={postLogo} className="home-post-button" alt="status" onClick={() => showPostPrompt()} title="Post"></img>                            
+                    <div className="post-tooltip-parent">
+                    <img src={postLogo} className="home-post-button" alt="status" onClick={() => showPostPrompt()}></img>    
+                    <span className="post-tooltip">post.</span>
+                    </div>
+
                 </div>
                 <Posts/>
             </div>
