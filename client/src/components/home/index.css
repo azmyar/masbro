@@ -408,6 +408,21 @@
 
     .home-title-container {
         margin-top: 150px;}
+
+    .users-title {
+        margin-bottom: 0px;
+        margin-top: 168px;
+    }
+
+    .profile-main {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+            margin-right:auto;
+            margin-left:30px;
+            margin-top:180px !important
+    }
 }
 
 @media screen and (max-width:1000px){
