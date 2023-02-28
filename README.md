@@ -16,7 +16,7 @@ $ npm --version
 ## Procedure
 
 ### 1. Download this repository as zip then extract it to your local
-You should have a folder called `ristek-masbro-main` stored in your local.
+You will have a folder called `ristek-masbro-main` stored in your local.
 
 ### 2. Install required dependencies
 
