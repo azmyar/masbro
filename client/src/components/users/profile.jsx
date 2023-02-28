@@ -7,6 +7,12 @@ import home from '../img/home.png'
 import bros from '../img/bros.png'
 import './index.css'
 
+import bro from '../img/bro-dark.png'
+import bestbro from '../img/bestbro-dark.png'
+import bront from '../img/bront-dark.png'
+
+import './index.css'
+
 const brosProfile = () => {
 
     // Initial Fetch
@@ -36,14 +42,21 @@ const brosProfile = () => {
     };
 
     const button = []
+    const emblem = []
 
-    
+
 
     if (sessionStorage.getItem("bestbros").includes(sessionStorage.getItem("brosusername"))){
+        emblem.push(
+            <img src={bestbro} className="users-status" alt="status" title='Your Best Bro'></img>                            
+        )
         button.push(
             <button className="user-bront" onClick={() => beBront(sessionStorage.getItem("brosusername"))}>Be Bron't</button>
         )
     } else if (sessionStorage.getItem("bros").includes(sessionStorage.getItem("brosusername"))) {
+        emblem.push(
+            <img src={bro} className="users-status" alt="status" title='Your Regular Bro'></img>                            
+            )
         button.push(
             <div>
             <button className="user-bro" onClick={() => beBestBro(sessionStorage.getItem("brosusername"))}>Be Best Bro</button>
@@ -51,6 +64,9 @@ const brosProfile = () => {
             </div>
         )
     } else {
+        emblem.push(
+            <img src={bront} className="users-status" alt="status" title='Not Your Bro'></img>                            
+            )
         button.push(
             <button className="user-bro" onClick={() => beBro(sessionStorage.getItem("brosusername"))}>Be Bro</button>
         )}
@@ -75,7 +91,10 @@ const brosProfile = () => {
                     <div className='profile-main'>
                         <img src={profile} className="profile-picture" alt="status" onClick={() => window.location.replace("/profile")}></img>                            
                         <div className='profile-username-container'>
-                            <p className='profile-username'>{sessionStorage.getItem("brosusername")}</p>
+                            <div className='users-emblem'>
+                                <p className='profile-username'>{sessionStorage.getItem("brosusername")}</p>
+                                {emblem}
+                            </div>
                             <div className='profile-button'>
                                 {button}
                             </div>

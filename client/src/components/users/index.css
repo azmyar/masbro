@@ -120,6 +120,28 @@
     width: 100%;
 }
 
+.status {
+    width: 30px;
+    height: 28px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.users-status {
+    width: 30px;
+    height: 28px;
+    margin-left: 2px;
+    margin-bottom: 30px;
+}
+
+.users-emblem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 .users-list-container {
     position: absolute;
     display: flex;
@@ -169,13 +191,6 @@
     width: 55px;
     height: 55px;
     margin-left: 20px;
-    margin-right: 20px;
-}
-
-.status {
-    width: 30px;
-    height: 28px;
-    margin-left: auto;
     margin-right: 20px;
 }
 

@@ -340,7 +340,11 @@
         margin-top: 105px;}
 
     .home-message {
-        margin-left: 160px;
+        margin-left: 110px;
+    }
+
+    .users-message {
+        margin-left: 170px;
     }
 
     
@@ -358,6 +362,10 @@
     .home-title {
         font-size:100px;
     }
+
+    .home-message {
+        margin-left: 160px;
+    }
 }
 
 @media screen and (max-width:600px){
@@ -367,4 +375,9 @@
 
     .home-title-container {
         width: 450px;}
+
+    .home-message {
+        margin-left: 210px;
+    }
+
 }
